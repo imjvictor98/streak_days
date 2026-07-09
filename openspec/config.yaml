@@ -1,0 +1,48 @@
+schema: spec-driven
+
+context: |
+  Platform: Android
+  Language: Kotlin
+  Build system: Gradle with Kotlin DSL (.kts) — build.gradle.kts, settings.gradle.kts
+  Min SDK / Target SDK: fill in here (e.g. minSdk 24, targetSdk 34)
+  Architecture: MVVM (ViewModel + StateFlow/Mutable StateFlow)
+  UI: Jetpack Compose
+  DI: Hilt
+  Async: Kotlin Coroutines + Flow
+  Networking: Retrofit + OkHttp + Moshi (for JSON)
+  Persistence: Room
+  Testing: JUnit5 + MockK + Turbine (for Flow) + Espresso/Compose UI Test
+  Style: ktlint / detekt for linting and formatting
+  Modularization: separate Gradle modules per feature where applicable
+  Naming: packages in lowercase, classes in PascalCase, functions in camelCase, private functions in initial underscore camelCase
+  Every Composable screen or reusable component must include a @Preview function
+  Everything beside specific acronym in business rules must be write in english
+
+rules:
+  proposal:
+    - State which Gradle module(s) are affected (app, core, feature-x, etc.)
+    - Explain impact on minimum SDK version or new dependencies
+    - Mention if new permissions are required in AndroidManifest.xml
+    - Indicate impact on existing screens or navigation (Navigation Component)
+    - Every Composable screen or reusable component must include a @Preview function
+    - Everything beside specific acronym in business rules must be write in english
+
+  specs:
+    - Use Given/When/Then format for screen and ViewModel behavior
+    - Specify UI states (loading, success, error, empty)
+    - Cover screen rotation / configuration change scenarios where relevant
+    - Reference existing API contracts before creating new endpoints
+    - Every interface, enum, and data class must have its own dedicated file
+
+  design:
+    - Indicate the affected layer (UI, ViewModel, Repository, Data Source)
+    - Describe the data flow (unidirectional: UI -> ViewModel -> UseCase -> Repository)
+    - Note caching/local persistence strategy where applicable
+    - Indicate new dependencies to add to libs.versions.toml (version catalog)
+
+  tasks:
+    - Keep tasks small and independently implementable
+    - Each task should indicate the affected .kt or .kts file(s)
+    - Include unit and/or instrumented tests as explicit tasks
+    - Order tasks respecting layer dependencies (data -> domain -> ui)
+    - Everything beside specific acronym in business rules must be write in english
