@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.work.ExistingPeriodicWorkPolicy
 import androidx.work.PeriodicWorkRequestBuilder
 import androidx.work.WorkManager
-import com.assabloy.livvi.streakdays.core.domain.usecase.CalculateTimeUntilMidnightUseCase
+import com.assabloy.livvi.streakdays.feature.widget.streak.domain.usecase.CalculateTimeUntilMidnightUseCase
 import dagger.hilt.android.qualifiers.ApplicationContext
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject

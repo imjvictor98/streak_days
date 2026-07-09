@@ -31,7 +31,7 @@ import com.assabloy.livvi.streakdays.R
 import com.assabloy.livvi.streakdays.core.domain.model.DailyProgressState
 import com.assabloy.livvi.streakdays.core.domain.model.Goal
 import com.assabloy.livvi.streakdays.core.domain.model.getWeeklyProgress
-import com.assabloy.livvi.streakdays.feature.widget.streak.domain.GetStreakWidgetDataUseCase
+import com.assabloy.livvi.streakdays.feature.widget.streak.domain.usecase.GetStreakWidgetDataUseCase
 import dagger.hilt.EntryPoint
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent

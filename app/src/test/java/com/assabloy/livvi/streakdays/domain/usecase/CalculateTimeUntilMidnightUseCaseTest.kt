@@ -1,6 +1,6 @@
 package com.assabloy.livvi.streakdays.domain.usecase
 
-import com.assabloy.livvi.streakdays.core.domain.usecase.CalculateTimeUntilMidnightUseCase
+import com.assabloy.livvi.streakdays.feature.widget.streak.domain.usecase.CalculateTimeUntilMidnightUseCase
 import org.junit.Assert.assertTrue
 import org.junit.Test
 
