@@ -2,6 +2,7 @@ package com.assabloy.livvi.streakdays.feature.widget.streak.domain
 
 import com.assabloy.livvi.streakdays.core.domain.model.Goal
 import com.assabloy.livvi.streakdays.core.domain.repository.GoalRepository
+import com.assabloy.livvi.streakdays.feature.widget.streak.domain.usecase.GetStreakWidgetDataUseCase
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.runBlocking

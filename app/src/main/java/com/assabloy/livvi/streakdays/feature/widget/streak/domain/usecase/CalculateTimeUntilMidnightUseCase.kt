@@ -1,4 +1,4 @@
-package com.assabloy.livvi.streakdays.core.domain.usecase
+package com.assabloy.livvi.streakdays.feature.widget.streak.domain.usecase
 
 import java.util.Calendar
 import javax.inject.Inject

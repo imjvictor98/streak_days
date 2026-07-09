@@ -1,4 +1,4 @@
-package com.assabloy.livvi.streakdays.feature.widget.streak.domain
+package com.assabloy.livvi.streakdays.feature.widget.streak.domain.usecase
 
 import com.assabloy.livvi.streakdays.core.domain.model.Goal
 import com.assabloy.livvi.streakdays.core.domain.repository.GoalRepository
