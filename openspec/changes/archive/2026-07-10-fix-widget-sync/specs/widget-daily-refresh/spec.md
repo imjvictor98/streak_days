@@ -1,9 +1,4 @@
-# Capability: Widget Daily Refresh
-
-## Purpose
-TBD: Manage the daily updates and synchronizations of the application widget.
-
-## Requirements
+## MODIFIED Requirements
 
 ### Requirement: Midnight Widget Sync
 The system SHALL schedule the daily widget update worker to execute shortly after midnight using `CANCEL_AND_REENQUEUE` policy so that the midnight delay is always recalculated from the current app launch time. The worker SHALL use a `LINEAR` backoff policy of 15 minutes on failure.
@@ -19,6 +14,8 @@ The system SHALL schedule the daily widget update worker to execute shortly afte
 #### Scenario: Worker failure and retry
 - **WHEN** `WidgetDailyUpdateWorker.doWork()` throws an exception
 - **THEN** the worker SHALL return `Result.retry()` and the system SHALL retry after 15 minutes using a LINEAR backoff policy
+
+## ADDED Requirements
 
 ### Requirement: Immediate Widget Refresh on Add
 The system SHALL trigger an immediate widget data refresh whenever the first instance of the streak widget is added to the home screen.
