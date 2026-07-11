@@ -85,7 +85,16 @@ Archive a completed change in the experimental workflow.
    mv "<changeRoot>" "<planningHome.changesDir>/archive/YYYY-MM-DD-<name>"
    ```
 
-6. **Display summary**
+6. **Generate Living README**
+
+   After a successful archive, read all consolidated spec files located in `openspec/specs/`. 
+   Use these specs to rewrite the `README.md` at the root of the project so that it accurately reflects the current features of the app.
+   Structure the `README.md` to include:
+   - **App Pitch / Overview**
+   - **Main Features** (extracted from the specs)
+   - **Tech Stack & Architecture**
+
+7. **Display summary**
 
    Show archive completion summary including:
    - Change name
