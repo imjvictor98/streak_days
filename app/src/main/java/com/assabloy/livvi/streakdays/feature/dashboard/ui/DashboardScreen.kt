@@ -17,6 +17,8 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.assabloy.livvi.streakdays.core.domain.model.Goal
 import com.assabloy.livvi.streakdays.core.designsystem.StreakDaysTheme
+import androidx.compose.ui.res.stringResource
+import com.assabloy.livvi.streakdays.R
 import java.time.LocalDate
 @Composable
 fun DashboardScreen(
@@ -47,7 +49,7 @@ fun DashboardScreenContent(
             TopAppBar(
                 title = { 
                     Text(
-                        text = "StreakDays", 
+                        text = stringResource(R.string.app_name), 
                         fontWeight = androidx.compose.ui.text.font.FontWeight.Bold 
                     ) 
                 }
@@ -59,7 +61,7 @@ fun DashboardScreenContent(
                 containerColor = MaterialTheme.colorScheme.primary,
                 contentColor = MaterialTheme.colorScheme.onPrimary
             ) {
-                Icon(Icons.Filled.Add, contentDescription = "Create Goal")
+                Icon(Icons.Filled.Add, contentDescription = stringResource(R.string.dashboard_create_goal_cd))
             }
         }
     ) { padding ->
@@ -80,14 +82,14 @@ fun DashboardScreenContent(
                 )
                 Spacer(modifier = Modifier.height(16.dp))
                 Text(
-                    text = "No goals yet", 
+                    text = stringResource(R.string.dashboard_empty_title), 
                     style = MaterialTheme.typography.headlineSmall,
                     fontWeight = androidx.compose.ui.text.font.FontWeight.Bold,
                     color = MaterialTheme.colorScheme.onSurface
                 )
                 Spacer(modifier = Modifier.height(8.dp))
                 Text(
-                    text = "Tap the + button to create your first goal and start building your streak!", 
+                    text = stringResource(R.string.dashboard_empty_description), 
                     style = MaterialTheme.typography.bodyLarge,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                     textAlign = androidx.compose.ui.text.style.TextAlign.Center
@@ -153,15 +155,15 @@ fun StreakStatsText(
         verticalAlignment = androidx.compose.ui.Alignment.CenterVertically
     ) {
         Column {
-            Text("Current", style = MaterialTheme.typography.labelMedium, color = labelColor)
+            Text(stringResource(R.string.dashboard_streak_current), style = MaterialTheme.typography.labelMedium, color = labelColor)
             Text("$currentStreak", style = MaterialTheme.typography.titleLarge, color = highlightColor, fontWeight = androidx.compose.ui.text.font.FontWeight.Bold)
         }
         Column(horizontalAlignment = androidx.compose.ui.Alignment.CenterHorizontally) {
-            Text("Best", style = MaterialTheme.typography.labelMedium, color = labelColor)
+            Text(stringResource(R.string.dashboard_streak_best), style = MaterialTheme.typography.labelMedium, color = labelColor)
             Text("$longestStreak", style = MaterialTheme.typography.titleMedium, color = textColor, fontWeight = androidx.compose.ui.text.font.FontWeight.SemiBold)
         }
         Column(horizontalAlignment = androidx.compose.ui.Alignment.End) {
-            Text("Target", style = MaterialTheme.typography.labelMedium, color = labelColor)
+            Text(stringResource(R.string.dashboard_streak_target), style = MaterialTheme.typography.labelMedium, color = labelColor)
             Text("$target", style = MaterialTheme.typography.titleMedium, color = textColor, fontWeight = androidx.compose.ui.text.font.FontWeight.SemiBold)
         }
     }
@@ -201,14 +203,14 @@ fun GoalCard(goal: Goal, onClick: () -> Unit, onLogRelapse: () -> Unit) {
                     Spacer(modifier = Modifier.height(4.dp))
                     if (isCompleted) {
                         Text(
-                            text = "Target Achieved! \uD83C\uDF89", 
+                            text = stringResource(R.string.dashboard_goal_achieved), 
                             style = MaterialTheme.typography.bodyMedium,
                             color = MaterialTheme.colorScheme.primary,
                             fontWeight = androidx.compose.ui.text.font.FontWeight.SemiBold
                         )
                     } else {
                         Text(
-                            text = "Keep going!", 
+                            text = stringResource(R.string.dashboard_goal_keep_going), 
                             style = MaterialTheme.typography.bodyMedium,
                             color = MaterialTheme.colorScheme.onSurfaceVariant
                         )
@@ -251,7 +253,7 @@ fun GoalCard(goal: Goal, onClick: () -> Unit, onLogRelapse: () -> Unit) {
                 ),
                 border = androidx.compose.foundation.BorderStroke(1.dp, MaterialTheme.colorScheme.error.copy(alpha = 0.5f))
             ) {
-                Text("Log Relapse")
+                Text(stringResource(R.string.action_log_relapse))
             }
         }
     }

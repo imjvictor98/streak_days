@@ -17,6 +17,8 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.assabloy.livvi.streakdays.core.domain.model.Goal
 import com.assabloy.livvi.streakdays.core.domain.model.Streak
 import com.assabloy.livvi.streakdays.core.designsystem.StreakDaysTheme
+import androidx.compose.ui.res.stringResource
+import com.assabloy.livvi.streakdays.R
 import java.time.LocalDate
 @Composable
 fun GoalDetailsScreen(
@@ -44,10 +46,10 @@ fun GoalDetailsScreenContent(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text(goal?.name ?: "Details") },
+                title = { Text(goal?.name ?: stringResource(R.string.goal_details_title_fallback)) },
                 navigationIcon = {
                     IconButton(onClick = onNavigateBack) {
-                        Icon(Icons.Filled.ArrowBack, contentDescription = "Back")
+                        Icon(Icons.Filled.ArrowBack, contentDescription = stringResource(R.string.goal_details_back_cd))
                     }
                 }
             )
@@ -66,11 +68,11 @@ fun GoalDetailsScreenContent(
                     .padding(16.dp),
                 verticalArrangement = Arrangement.spacedBy(16.dp)
             ) {
-                Text("Current Streak: ${nonNullGoal.currentStreakDays} days", style = MaterialTheme.typography.headlineMedium)
-                Text("Longest Streak: ${nonNullGoal.longestStreakDays} days", style = MaterialTheme.typography.titleLarge)
+                Text(stringResource(R.string.goal_details_current_streak, nonNullGoal.currentStreakDays), style = MaterialTheme.typography.headlineMedium)
+                Text(stringResource(R.string.goal_details_longest_streak, nonNullGoal.longestStreakDays), style = MaterialTheme.typography.titleLarge)
                 
                 Button(onClick = onLogRelapse, modifier = Modifier.fillMaxWidth()) {
-                    Text("Log Relapse")
+                    Text(stringResource(R.string.action_log_relapse))
                 }
 
                 Button(
@@ -78,20 +80,20 @@ fun GoalDetailsScreenContent(
                     modifier = Modifier.fillMaxWidth(),
                     colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.error)
                 ) {
-                    Text("Delete Goal")
+                    Text(stringResource(R.string.goal_details_delete_button))
                 }
 
                 Divider()
 
-                Text("Past Streaks", style = MaterialTheme.typography.titleLarge)
+                Text(stringResource(R.string.goal_details_past_streaks_title), style = MaterialTheme.typography.titleLarge)
                 
                 LazyColumn(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                     items(nonNullGoal.pastStreaks) { streak ->
                         Card(modifier = Modifier.fillMaxWidth()) {
                             Column(modifier = Modifier.padding(16.dp)) {
-                                Text("Length: ${streak.lengthInDays} days")
-                                Text("From: ${streak.startDate}")
-                                Text("To: ${streak.endDate ?: "Present"}")
+                                Text(stringResource(R.string.goal_details_streak_length, streak.lengthInDays))
+                                Text(stringResource(R.string.goal_details_streak_from, streak.startDate.toString()))
+                                Text(stringResource(R.string.goal_details_streak_to, streak.endDate?.toString() ?: stringResource(R.string.goal_details_streak_present)))
                             }
                         }
                     }

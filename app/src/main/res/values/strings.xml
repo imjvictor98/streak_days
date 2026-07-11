@@ -1,3 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Streak Days</string>
+    <string name="app_name">StreakDays</string>
+
+    <!-- Create Goal Screen -->
+    <string name="create_goal_title">Create Goal</string>
+    <string name="create_goal_name_label">Goal Name (e.g. No Sugar)</string>
+    <string name="create_goal_duration_label">Target Duration (Days)</string>
+    <string name="create_goal_start_date">Start Date: Today</string>
+    <string name="create_goal_save_button">Save Goal</string>
+
+    <!-- Dashboard Screen -->
+    <string name="dashboard_create_goal_cd">Create Goal</string>
+    <string name="dashboard_empty_title">No goals yet</string>
+    <string name="dashboard_empty_description">Tap the + button to create your first goal and start building your streak!</string>
+    <string name="dashboard_goal_achieved">Target Achieved! \uD83C\uDF89</string>
+    <string name="dashboard_goal_keep_going">Keep going!</string>
+    <string name="dashboard_streak_current">Current</string>
+    <string name="dashboard_streak_best">Best</string>
+    <string name="dashboard_streak_target">Target</string>
+    <string name="action_log_relapse">Log Relapse</string>
+
+    <!-- Goal Details Screen -->
+    <string name="goal_details_title_fallback">Details</string>
+    <string name="goal_details_back_cd">Back</string>
+    <string name="goal_details_current_streak">Current Streak: %1$d days</string>
+    <string name="goal_details_longest_streak">Longest Streak: %1$d days</string>
+    <string name="goal_details_delete_button">Delete Goal</string>
+    <string name="goal_details_past_streaks_title">Past Streaks</string>
+    <string name="goal_details_streak_length">Length: %1$d days</string>
+    <string name="goal_details_streak_from">From: %1$s</string>
+    <string name="goal_details_streak_to">To: %1$s</string>
+    <string name="goal_details_streak_present">Present</string>
+
+    <!-- Widget -->
+    <string name="widget_no_active_goal">No active goal</string>
+    <string name="widget_days">Days</string>
+    <string name="widget_target">TARGET</string>
+    <string name="widget_day_sun">S</string>
+    <string name="widget_day_mon">M</string>
+    <string name="widget_day_tue">T</string>
+    <string name="widget_day_wed">W</string>
+    <string name="widget_day_thu">T</string>
+    <string name="widget_day_fri">F</string>
+    <string name="widget_day_sat">S</string>
 </resources>

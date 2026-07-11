@@ -10,8 +10,9 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.compose.ui.res.stringResource
+import com.assabloy.livvi.streakdays.R
 import com.assabloy.livvi.streakdays.core.designsystem.StreakDaysTheme
-
 @Composable
 fun CreateGoalScreen(
     onNavigateBack: () -> Unit,
@@ -47,7 +48,7 @@ fun CreateGoalScreenContent(
 ) {
     Scaffold(
         topBar = {
-            TopAppBar(title = { Text("Create Goal") })
+            TopAppBar(title = { Text(stringResource(R.string.create_goal_title)) })
         }
     ) { padding ->
         Column(
@@ -60,26 +61,26 @@ fun CreateGoalScreenContent(
             OutlinedTextField(
                 value = name,
                 onValueChange = onNameChange,
-                label = { Text("Goal Name (e.g. No Sugar)") },
+                label = { Text(stringResource(R.string.create_goal_name_label)) },
                 modifier = Modifier.fillMaxWidth()
             )
 
             OutlinedTextField(
                 value = duration,
                 onValueChange = onDurationChange,
-                label = { Text("Target Duration (Days)") },
+                label = { Text(stringResource(R.string.create_goal_duration_label)) },
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
                 modifier = Modifier.fillMaxWidth()
             )
 
-            Text("Start Date: Today")
+            Text(stringResource(R.string.create_goal_start_date))
 
             Button(
                 onClick = onSaveGoal,
                 modifier = Modifier.fillMaxWidth(),
                 enabled = name.isNotBlank() && duration.toIntOrNull() != null
             ) {
-                Text("Save Goal")
+                Text(stringResource(R.string.create_goal_save_button))
             }
         }
     }
