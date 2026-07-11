@@ -3,8 +3,8 @@ package com.cvj.app.streakdays.ui
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithText
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.cvj.app.streakdays.domain.model.Goal
-import com.cvj.app.streakdays.ui.dashboard.GoalCard
+import com.cvj.app.streakdays.core.domain.model.Goal
+import com.cvj.app.streakdays.feature.dashboard.ui.components.GoalCard
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -30,7 +30,10 @@ class DashboardScreenTest {
         )
 
         composeTestRule.setContent {
-            GoalCard(goal = goal, onClick = {}, onLogRelapse = {})
+            GoalCard(isCompleted = goal.isCompleted, onClick = {}) {
+                Header(title = goal.name, subtitle = "Keep going!", isCompleted = goal.isCompleted, modifier = androidx.compose.ui.Modifier)
+                StatsRow(currentStreak = goal.currentStreakDays, bestStreak = goal.longestStreakDays, target = goal.targetDurationDays, isCompleted = goal.isCompleted, modifier = androidx.compose.ui.Modifier)
+            }
         }
 
         composeTestRule.onNodeWithText("No Sugar").assertExists()

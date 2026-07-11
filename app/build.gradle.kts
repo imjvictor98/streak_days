@@ -8,7 +8,7 @@ plugins {
 
 android {
     namespace = "com.cvj.app.streakdays"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.cvj.app.streakdays"
