@@ -88,7 +88,7 @@ fun StreakDaysWidgetContent(mainGoal: Goal?) {
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Text(
-                    text = "Nenhum objetivo ativo",
+                    text = "Você não tem nenhum objetivo ainda",
                     style = TextStyle(color = GlanceTheme.colors.onSurface)
                 )
             }
@@ -232,5 +232,14 @@ fun StreakDaysWidgetPreview() {
     )
     GlanceTheme {
         StreakDaysWidgetContent(mainGoal = sampleGoal)
+    }
+}
+
+@androidx.glance.preview.ExperimentalGlancePreviewApi
+@androidx.glance.preview.Preview
+@Composable
+fun StreakDaysWidgetEmptyPreview() {
+    GlanceTheme {
+        StreakDaysWidgetContent(mainGoal = null)
     }
 }
