@@ -3,8 +3,11 @@ package com.cvj.app.streakdays.data.local
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.cvj.app.streakdays.data.local.entity.Goal
-import com.cvj.app.streakdays.data.local.entity.Relapse
+import com.cvj.app.streakdays.core.data.local.GoalDao
+import com.cvj.app.streakdays.core.data.local.RelapseDao
+import com.cvj.app.streakdays.core.data.local.StreakDatabase
+import com.cvj.app.streakdays.core.data.local.entity.Goal
+import com.cvj.app.streakdays.core.data.local.entity.Relapse
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 import org.junit.After
@@ -38,7 +41,8 @@ class DaoTest {
 
     @Test
     fun insertAndGetGoal() = runBlocking {
-        val goal = Goal(name = "No Sugar", targetDurationDays = 30, startDate = LocalDate.of(2023, 1, 1))
+        val goal =
+            Goal(name = "No Sugar", targetDurationDays = 30, startDate = LocalDate.of(2023, 1, 1))
         val id = goalDao.insertGoal(goal)
         
         val retrievedGoal = goalDao.getGoalById(id).first()
