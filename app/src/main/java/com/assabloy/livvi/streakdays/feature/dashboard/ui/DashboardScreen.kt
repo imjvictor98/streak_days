@@ -20,6 +20,7 @@ import com.assabloy.livvi.streakdays.feature.dashboard.ui.components.GoalCard
 import androidx.compose.ui.res.stringResource
 import com.assabloy.livvi.streakdays.R
 import java.time.LocalDate
+
 @Composable
 fun DashboardScreen(
     onNavigateToCreateGoal: () -> Unit,
@@ -120,7 +121,7 @@ fun DashboardScreenContent(
                         ) {
                             Header(
                                 title = goal.name,
-                                subtitle = if (isCompleted) stringResource(R.string.dashboard_goal_target_achieved) else stringResource(R.string.dashboard_goal_keep_going),
+                                subtitle = if (isCompleted) stringResource(R.string.dashboard_goal_achieved) else stringResource(R.string.dashboard_goal_keep_going),
                                 isCompleted = isCompleted,
                                 modifier = Modifier.weight(1f)
                             )
@@ -150,7 +151,7 @@ fun DashboardScreenContent(
                                 ),
                                 border = androidx.compose.foundation.BorderStroke(1.dp, MaterialTheme.colorScheme.error.copy(alpha = 0.5f))
                             ) {
-                                Text(stringResource(R.string.dashboard_goal_log_relapse))
+                                Text(stringResource(R.string.action_log_relapse))
                             }
                         }
                     }
