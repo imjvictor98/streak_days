@@ -17,7 +17,7 @@ import javax.inject.Inject
 @HiltViewModel
 class GoalDetailsViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle,
-    private val getGoalByIdUseCase: GetGoalByIdUseCase,
+    getGoalByIdUseCase: GetGoalByIdUseCase,
     private val logRelapseUseCase: LogRelapseUseCase,
     private val deleteGoalUseCase: DeleteGoalUseCase
 ) : ViewModel() {
