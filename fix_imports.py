@@ -2,17 +2,17 @@ import os
 import glob
 
 replacements = {
-    "import com.assabloy.livvi.streakdays.domain.model.": "import com.assabloy.livvi.streakdays.core.domain.model.",
-    "import com.assabloy.livvi.streakdays.domain.usecase.": "import com.assabloy.livvi.streakdays.core.domain.usecase.",
-    "import com.assabloy.livvi.streakdays.domain.GoalRepository": "import com.assabloy.livvi.streakdays.core.domain.repository.GoalRepository",
-    "import com.assabloy.livvi.streakdays.ui.create.": "import com.assabloy.livvi.streakdays.feature.create.ui.",
-    "import com.assabloy.livvi.streakdays.ui.dashboard.": "import com.assabloy.livvi.streakdays.feature.dashboard.ui.",
-    "import com.assabloy.livvi.streakdays.ui.details.": "import com.assabloy.livvi.streakdays.feature.details.ui.",
-    "import com.assabloy.livvi.streakdays.ui.navigation.": "import com.assabloy.livvi.streakdays.core.navigation.",
-    "import com.assabloy.livvi.streakdays.ui.theme.": "import com.assabloy.livvi.streakdays.core.designsystem.",
-    "import com.assabloy.livvi.streakdays.ui.widget.": "import com.assabloy.livvi.streakdays.core.widget.",
-    "import com.assabloy.livvi.streakdays.data.local.": "import com.assabloy.livvi.streakdays.core.data.local.",
-    "import com.assabloy.livvi.streakdays.data.repository.": "import com.assabloy.livvi.streakdays.core.data.repository."
+    "import com.cvj.app.streakdays.domain.model.": "import com.cvj.app.streakdays.core.domain.model.",
+    "import com.cvj.app.streakdays.domain.usecase.": "import com.cvj.app.streakdays.core.domain.usecase.",
+    "import com.cvj.app.streakdays.domain.GoalRepository": "import com.cvj.app.streakdays.core.domain.repository.GoalRepository",
+    "import com.cvj.app.streakdays.ui.create.": "import com.cvj.app.streakdays.feature.create.ui.",
+    "import com.cvj.app.streakdays.ui.dashboard.": "import com.cvj.app.streakdays.feature.dashboard.ui.",
+    "import com.cvj.app.streakdays.ui.details.": "import com.cvj.app.streakdays.feature.details.ui.",
+    "import com.cvj.app.streakdays.ui.navigation.": "import com.cvj.app.streakdays.core.navigation.",
+    "import com.cvj.app.streakdays.ui.theme.": "import com.cvj.app.streakdays.core.designsystem.",
+    "import com.cvj.app.streakdays.ui.widget.": "import com.cvj.app.streakdays.core.widget.",
+    "import com.cvj.app.streakdays.data.local.": "import com.cvj.app.streakdays.core.data.local.",
+    "import com.cvj.app.streakdays.data.repository.": "import com.cvj.app.streakdays.core.data.repository."
 }
 
 for root, dirs, files in os.walk("app/src/main/java"):
@@ -26,8 +26,8 @@ for root, dirs, files in os.walk("app/src/main/java"):
                 content = content.replace(k, v)
             
             # also replace package names in data
-            if path.startswith("app/src/main/java/com/assabloy/livvi/streakdays/core/data"):
-                content = content.replace("package com.assabloy.livvi.streakdays.data", "package com.assabloy.livvi.streakdays.core.data")
+            if path.startswith("app/src/main/java/com/cvj/app/streakdays/core/data"):
+                content = content.replace("package com.cvj.app.streakdays.data", "package com.cvj.app.streakdays.core.data")
                 
             if content != original:
                 with open(path, "w") as f:
