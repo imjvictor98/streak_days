@@ -88,7 +88,7 @@ fun StreakDaysWidgetContent(mainGoal: Goal?) {
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Text(
-                    text = "Você não tem nenhum objetivo ainda",
+                    text = LocalContext.current.getString(R.string.widget_no_active_goal),
                     style = TextStyle(color = GlanceTheme.colors.onSurface)
                 )
             }
@@ -112,7 +112,7 @@ fun WidgetHeader(goal: Goal) {
                 )
             )
             Text(
-                text = "${goal.currentStreakDays} Dias", 
+                text = "${goal.currentStreakDays} ${LocalContext.current.getString(R.string.widget_days)}",
                 style = TextStyle(
                     color = GlanceTheme.colors.onSurface, 
                     fontWeight = FontWeight.Bold,
@@ -133,7 +133,16 @@ fun WidgetHeader(goal: Goal) {
 @Composable
 fun WidgetWeeklyCalendar(goal: Goal) {
     val weeklyProgress = goal.getWeeklyProgress()
-    val daysOfWeek = listOf("D", "S", "T", "Q", "Q", "S", "S")
+    val context = LocalContext.current
+    val daysOfWeek = listOf(
+        context.getString(R.string.widget_day_sun),
+        context.getString(R.string.widget_day_mon),
+        context.getString(R.string.widget_day_tue),
+        context.getString(R.string.widget_day_wed),
+        context.getString(R.string.widget_day_thu),
+        context.getString(R.string.widget_day_fri),
+        context.getString(R.string.widget_day_sat)
+    )
 
     Row(
         modifier = GlanceModifier.fillMaxWidth(),
@@ -180,7 +189,7 @@ fun WidgetProgressBar(goal: Goal) {
         ) {
             Column(modifier = GlanceModifier.defaultWeight()) {
                 Text(
-                    text = "META",
+                    text = LocalContext.current.getString(R.string.widget_target),
                     style = TextStyle(
                         color = GlanceTheme.colors.onSurfaceVariant,
                         fontSize = 10.sp,
