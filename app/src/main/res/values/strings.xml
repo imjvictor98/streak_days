@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">Streak Days</string>
+    
+    <!-- Dashboard Screen -->
+    <string name="dashboard_empty_title">No goals yet</string>
+    <string name="dashboard_empty_subtitle">Tap the + button to create your first goal and start building your streak!</string>
+    <string name="dashboard_goal_target_achieved">Target Achieved! 🎉</string>
+    <string name="dashboard_goal_keep_going">Keep going!</string>
+    <string name="dashboard_goal_log_relapse">Log Relapse</string>
+    <string name="dashboard_create_goal_fab_cd">Create Goal</string>
+    
+    <!-- Streak Stats -->
+    <string name="dashboard_streak_current">Current</string>
+    <string name="dashboard_streak_best">Best</string>
+    <string name="dashboard_streak_target">Target</string>
 </resources>
