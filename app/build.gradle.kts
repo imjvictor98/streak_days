@@ -7,11 +7,11 @@ plugins {
 }
 
 android {
-    namespace = "com.assabloy.livvi.streakdays"
+    namespace = "com.cvj.app.streakdays"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.assabloy.livvi.streakdays"
+        applicationId = "com.cvj.app.streakdays"
         minSdk = 24
         targetSdk = 35
         versionCode = 1

@@ -17,7 +17,7 @@ Currently, the StreakDays application uses Jetpack Compose for its UI but lacks 
 
 ## Impact
 
-- **Affected code**: `app/src/main/java/com/assabloy/livvi/streakdays/ui/dashboard/DashboardScreen.kt`, `app/src/main/java/com/assabloy/livvi/streakdays/ui/create/CreateGoalScreen.kt`, `app/src/main/java/com/assabloy/livvi/streakdays/ui/details/GoalDetailsScreen.kt`.
+- **Affected code**: `app/src/main/java/com/cvj/app/streakdays/ui/dashboard/DashboardScreen.kt`, `app/src/main/java/com/cvj/app/streakdays/ui/create/CreateGoalScreen.kt`, `app/src/main/java/com/cvj/app/streakdays/ui/details/GoalDetailsScreen.kt`.
 - **Dependencies**: No new dependencies required.
 - **SDK/Permissions**: No changes to minSdk/targetSdk or AndroidManifest required.
 - **Modules**: Modifications are scoped to the `app` module.
