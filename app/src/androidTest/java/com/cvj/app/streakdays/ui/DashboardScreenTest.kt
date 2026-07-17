@@ -31,8 +31,19 @@ class DashboardScreenTest {
 
         composeTestRule.setContent {
             GoalCard(isCompleted = goal.isCompleted, onClick = {}) {
-                Header(title = goal.name, subtitle = "Keep going!", isCompleted = goal.isCompleted, modifier = androidx.compose.ui.Modifier)
-                StatsRow(currentStreak = goal.currentStreakDays, bestStreak = goal.longestStreakDays, target = goal.targetDurationDays, isCompleted = goal.isCompleted, modifier = androidx.compose.ui.Modifier)
+                Header(
+                    title = goal.name,
+                    subtitle = "Keep going!",
+                    isCompleted = goal.isCompleted,
+                    modifier = androidx.compose.ui.Modifier
+                )
+                StatsArea(
+                    currentStreak = goal.currentStreakDays,
+                    bestStreak = goal.longestStreakDays,
+                    target = goal.targetDurationDays,
+                    isCompleted = goal.isCompleted,
+                    modifier = androidx.compose.ui.Modifier
+                )
             }
         }
 

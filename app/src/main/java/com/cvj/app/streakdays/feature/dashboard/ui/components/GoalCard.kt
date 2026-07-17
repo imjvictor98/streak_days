@@ -24,6 +24,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.cvj.app.streakdays.core.designsystem.theme.StreakDaysTheme
 
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.ui.graphics.Color
+import com.cvj.app.streakdays.core.ui.components.StreakOutlineButton
+
 @Composable
 fun GoalCard(
     isCompleted: Boolean,
@@ -35,10 +39,10 @@ fun GoalCard(
         modifier = modifier
             .fillMaxWidth()
             .clickable(onClick = onClick),
-        shape = MaterialTheme.shapes.large,
+        shape = RoundedCornerShape(16.dp),
         elevation = CardDefaults.cardElevation(defaultElevation = if (isCompleted) 4.dp else 2.dp),
         colors = CardDefaults.cardColors(
-            containerColor = if (isCompleted) MaterialTheme.colorScheme.primaryContainer else MaterialTheme.colorScheme.surface
+            containerColor = if (isCompleted) MaterialTheme.colorScheme.primaryContainer else Color.White
         )
     ) {
         Column(modifier = Modifier.padding(20.dp)) {
@@ -64,7 +68,7 @@ fun GoalCardPreview_Active() {
                     modifier = Modifier.weight(1f)
                 )
                 Spacer(modifier = Modifier.width(16.dp))
-                ProgressRing(
+                ProgressArea(
                     progress = 0.5f,
                     label = "50%",
                     isCompleted = false,
@@ -72,7 +76,7 @@ fun GoalCardPreview_Active() {
                 )
             }
             Spacer(modifier = Modifier.height(24.dp))
-            StatsRow(
+            StatsArea(
                 currentStreak = 15,
                 bestStreak = 20,
                 target = 30,
@@ -81,16 +85,11 @@ fun GoalCardPreview_Active() {
             )
             Spacer(modifier = Modifier.height(16.dp))
             ActionArea(modifier = Modifier) {
-                OutlinedButton(
+                StreakOutlineButton(
+                    text = "Log Relapse",
                     onClick = { },
-                    modifier = Modifier.fillMaxWidth(),
-                    colors = ButtonDefaults.outlinedButtonColors(
-                        contentColor = MaterialTheme.colorScheme.error
-                    ),
-                    border = BorderStroke(1.dp, MaterialTheme.colorScheme.error.copy(alpha = 0.5f))
-                ) {
-                    Text("Log Relapse")
-                }
+                    modifier = Modifier.fillMaxWidth()
+                )
             }
         }
     }
@@ -113,7 +112,7 @@ fun GoalCardPreview_Completed() {
                     modifier = Modifier.weight(1f)
                 )
                 Spacer(modifier = Modifier.width(16.dp))
-                ProgressRing(
+                ProgressArea(
                     progress = 1.0f,
                     label = "100%",
                     isCompleted = true,
@@ -121,7 +120,7 @@ fun GoalCardPreview_Completed() {
                 )
             }
             Spacer(modifier = Modifier.height(24.dp))
-            StatsRow(
+            StatsArea(
                 currentStreak = 30,
                 bestStreak = 30,
                 target = 30,
@@ -130,16 +129,11 @@ fun GoalCardPreview_Completed() {
             )
             Spacer(modifier = Modifier.height(16.dp))
             ActionArea(modifier = Modifier) {
-                OutlinedButton(
+                StreakOutlineButton(
+                    text = "Log Relapse",
                     onClick = { },
-                    modifier = Modifier.fillMaxWidth(),
-                    colors = ButtonDefaults.outlinedButtonColors(
-                        contentColor = MaterialTheme.colorScheme.error
-                    ),
-                    border = BorderStroke(1.dp, MaterialTheme.colorScheme.error.copy(alpha = 0.5f))
-                ) {
-                    Text("Log Relapse")
-                }
+                    modifier = Modifier.fillMaxWidth()
+                )
             }
         }
     }

@@ -34,6 +34,14 @@
                 android:name="android.appwidget.provider"
                 android:resource="@xml/streak_days_widget_info" />
         </receiver>
+
+        <receiver
+            android:name=".feature.widget.streak.presentation.receiver.MidnightUpdateReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.cvj.app.streakdays.ACTION_MIDNIGHT_UPDATE" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>
