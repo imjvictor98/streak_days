@@ -12,6 +12,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import com.cvj.app.streakdays.R
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.unit.sp
+import com.cvj.app.streakdays.core.designsystem.theme.HankenGrotesk
+import com.cvj.app.streakdays.core.designsystem.theme.Inter
 
 @Composable
 fun StreakStatsText(
@@ -21,9 +26,26 @@ fun StreakStatsText(
     isCompleted: Boolean,
     modifier: Modifier = Modifier
 ) {
-    val textColor = if (isCompleted) MaterialTheme.colorScheme.onPrimaryContainer else MaterialTheme.colorScheme.onSurface
-    val labelColor = if (isCompleted) MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.7f) else MaterialTheme.colorScheme.onSurfaceVariant
-    val highlightColor = if (isCompleted) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.primary
+    val labelStyle = TextStyle(
+        fontFamily = Inter,
+        fontWeight = FontWeight.SemiBold,
+        fontSize = 14.sp,
+        color = Color(0xFF777587)
+    )
+
+    val currentValueStyle = TextStyle(
+        fontFamily = HankenGrotesk,
+        fontWeight = FontWeight.Bold,
+        fontSize = 20.sp,
+        color = Color(0xFF3525CD)
+    )
+
+    val otherValueStyle = TextStyle(
+        fontFamily = HankenGrotesk,
+        fontWeight = FontWeight.SemiBold,
+        fontSize = 20.sp,
+        color = Color(0xFF191C1E)
+    )
     
     Row(
         modifier = modifier.fillMaxWidth(),
@@ -31,16 +53,16 @@ fun StreakStatsText(
         verticalAlignment = Alignment.CenterVertically
     ) {
         Column {
-            Text(stringResource(R.string.dashboard_streak_current), style = MaterialTheme.typography.labelMedium, color = labelColor)
-            Text("$currentStreak", style = MaterialTheme.typography.titleLarge, color = highlightColor, fontWeight = FontWeight.Bold)
+            Text(stringResource(R.string.dashboard_streak_current), style = labelStyle)
+            Text("$currentStreak", style = currentValueStyle)
         }
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
-            Text(stringResource(R.string.dashboard_streak_best), style = MaterialTheme.typography.labelMedium, color = labelColor)
-            Text("$longestStreak", style = MaterialTheme.typography.titleMedium, color = textColor, fontWeight = FontWeight.SemiBold)
+            Text(stringResource(R.string.dashboard_streak_best), style = labelStyle)
+            Text("$longestStreak", style = otherValueStyle)
         }
         Column(horizontalAlignment = Alignment.End) {
-            Text(stringResource(R.string.dashboard_streak_target), style = MaterialTheme.typography.labelMedium, color = labelColor)
-            Text("$target", style = MaterialTheme.typography.titleMedium, color = textColor, fontWeight = FontWeight.SemiBold)
+            Text(stringResource(R.string.dashboard_streak_target), style = labelStyle)
+            Text("$target", style = otherValueStyle)
         }
     }
 }

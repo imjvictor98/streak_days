@@ -9,6 +9,8 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+import java.time.format.DateTimeParseException
 import javax.inject.Inject
 
 @HiltViewModel
@@ -22,8 +24,12 @@ class CreateGoalViewModel @Inject constructor(
     private val _durationDays = MutableStateFlow("30")
     val durationDays: StateFlow<String> = _durationDays.asStateFlow()
 
-    private val _startDate = MutableStateFlow(LocalDate.now())
-    val startDate: StateFlow<LocalDate> = _startDate.asStateFlow()
+
+
+    private val formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy")
+
+    private val _startDateText = MutableStateFlow(LocalDate.now().format(formatter))
+    val startDateText: StateFlow<String> = _startDateText.asStateFlow()
 
     private val _isSaved = MutableStateFlow(false)
     val isSaved: StateFlow<Boolean> = _isSaved.asStateFlow()
@@ -36,17 +42,22 @@ class CreateGoalViewModel @Inject constructor(
         _durationDays.value = days
     }
 
-    fun updateStartDate(date: LocalDate) {
-        _startDate.value = date
+    fun updateStartDateText(dateString: String) {
+        _startDateText.value = dateString
     }
 
     fun saveGoal() {
         viewModelScope.launch {
             val duration = _durationDays.value.toIntOrNull() ?: 30
+            val parsedStartDate = try {
+                LocalDate.parse(_startDateText.value, formatter)
+            } catch (e: DateTimeParseException) {
+                LocalDate.now()
+            }
             createGoalUseCase(
                 name = _name.value.ifBlank { "Untitled Goal" },
                 targetDurationDays = duration,
-                startDate = _startDate.value
+                startDate = parsedStartDate
             )
             _isSaved.value = true
         }

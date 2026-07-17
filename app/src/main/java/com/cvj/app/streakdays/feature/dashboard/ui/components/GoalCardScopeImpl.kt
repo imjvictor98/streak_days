@@ -11,53 +11,60 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.unit.sp
+import com.cvj.app.streakdays.core.designsystem.theme.HankenGrotesk
+import com.cvj.app.streakdays.core.designsystem.theme.Inter
+
 internal object GoalCardScopeImpl : GoalCardScope {
     @Composable
     override fun Header(title: String, subtitle: String, isCompleted: Boolean, modifier: Modifier) {
         Column(modifier = modifier) {
             Text(
                 text = title, 
-                style = MaterialTheme.typography.headlineSmall,
-                color = if (isCompleted) MaterialTheme.colorScheme.onPrimaryContainer else MaterialTheme.colorScheme.onSurface,
-                fontWeight = FontWeight.Bold
+                style = TextStyle(
+                    fontFamily = HankenGrotesk,
+                    fontWeight = FontWeight.SemiBold,
+                    fontSize = 24.sp,
+                    color = Color(0xFF191C1E)
+                )
             )
             Spacer(modifier = Modifier.height(4.dp))
-            if (isCompleted) {
-                Text(
-                    text = subtitle, 
-                    style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.primary,
-                    fontWeight = FontWeight.SemiBold
+            Text(
+                text = subtitle, 
+                style = TextStyle(
+                    fontFamily = Inter,
+                    fontWeight = FontWeight.Normal,
+                    fontSize = 14.sp,
+                    color = Color(0xFF777587)
                 )
-            } else {
-                Text(
-                    text = subtitle, 
-                    style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
-                )
-            }
+            )
         }
     }
 
     @Composable
-    override fun ProgressRing(progress: Float, label: String, isCompleted: Boolean, modifier: Modifier) {
+    override fun ProgressArea(progress: Float, label: String, isCompleted: Boolean, modifier: Modifier) {
         StreakProgressRing(
             progress = progress,
             modifier = modifier,
-            color = if (isCompleted) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.primary,
-            trackColor = if (isCompleted) MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.2f) else MaterialTheme.colorScheme.surfaceVariant
+            color = Color(0xFF4D44E3), // Primary or according to Figma
+            trackColor = Color(0xFFE2DFEB)
         ) {
             Text(
                 text = label,
-                style = MaterialTheme.typography.labelSmall,
-                fontWeight = FontWeight.Bold,
-                color = if (isCompleted) MaterialTheme.colorScheme.onPrimaryContainer else MaterialTheme.colorScheme.onSurface
+                style = TextStyle(
+                    fontFamily = Inter,
+                    fontWeight = FontWeight.SemiBold,
+                    fontSize = 14.sp,
+                    color = Color(0xFF191C1E)
+                )
             )
         }
     }
 
     @Composable
-    override fun StatsRow(currentStreak: Int, bestStreak: Int, target: Int, isCompleted: Boolean, modifier: Modifier) {
+    override fun StatsArea(currentStreak: Int, bestStreak: Int, target: Int, isCompleted: Boolean, modifier: Modifier) {
         StreakStatsText(
             currentStreak = currentStreak,
             longestStreak = bestStreak,

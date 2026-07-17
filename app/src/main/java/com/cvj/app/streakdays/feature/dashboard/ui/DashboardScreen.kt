@@ -20,6 +20,10 @@ import com.cvj.app.streakdays.feature.dashboard.ui.components.GoalCard
 import androidx.compose.ui.res.stringResource
 import java.time.LocalDate
 import com.cvj.app.streakdays.R
+import com.cvj.app.streakdays.core.ui.components.StreakFloatingActionButton
+import com.cvj.app.streakdays.core.ui.components.StreakOutlineButton
+import com.cvj.app.streakdays.core.ui.components.StreakTopAppBar
+import androidx.compose.ui.graphics.Color
 
 @Composable
 fun DashboardScreen(
@@ -46,24 +50,17 @@ fun DashboardScreenContent(
     onLogRelapse: (Long) -> Unit
 ) {
     Scaffold(
+        containerColor = Color(0xFFF6F8FA),
         topBar = {
-            TopAppBar(
-                title = { 
-                    Text(
-                        text = stringResource(R.string.app_name),
-                        fontWeight = androidx.compose.ui.text.font.FontWeight.Bold 
-                    ) 
-                }
+            StreakTopAppBar(
+                title = stringResource(R.string.app_name)
             )
         },
         floatingActionButton = {
-            FloatingActionButton(
+            StreakFloatingActionButton(
                 onClick = onNavigateToCreateGoal,
-                containerColor = MaterialTheme.colorScheme.primary,
-                contentColor = MaterialTheme.colorScheme.onPrimary
-            ) {
-                Icon(Icons.Filled.Add, contentDescription = stringResource(R.string.dashboard_create_goal_cd))
-            }
+                contentDescription = stringResource(R.string.dashboard_create_goal_cd)
+            )
         }
     ) { padding ->
         if (goals.isEmpty()) {
@@ -126,7 +123,7 @@ fun DashboardScreenContent(
                                 modifier = Modifier.weight(1f)
                             )
                             Spacer(modifier = Modifier.width(16.dp))
-                            ProgressRing(
+                            ProgressArea(
                                 progress = progress,
                                 label = "${(progress * 100).toInt()}%",
                                 isCompleted = isCompleted,
@@ -134,7 +131,7 @@ fun DashboardScreenContent(
                             )
                         }
                         Spacer(modifier = Modifier.height(24.dp))
-                        StatsRow(
+                        StatsArea(
                             currentStreak = goal.currentStreakDays,
                             bestStreak = goal.longestStreakDays,
                             target = goal.targetDurationDays,
@@ -143,16 +140,11 @@ fun DashboardScreenContent(
                         )
                         Spacer(modifier = Modifier.height(16.dp))
                         ActionArea(modifier = Modifier) {
-                            OutlinedButton(
+                            StreakOutlineButton(
+                                text = stringResource(R.string.action_log_relapse),
                                 onClick = { onLogRelapse(goal.id) },
-                                modifier = Modifier.fillMaxWidth(),
-                                colors = ButtonDefaults.outlinedButtonColors(
-                                    contentColor = MaterialTheme.colorScheme.error
-                                ),
-                                border = androidx.compose.foundation.BorderStroke(1.dp, MaterialTheme.colorScheme.error.copy(alpha = 0.5f))
-                            ) {
-                                Text(stringResource(R.string.action_log_relapse))
-                            }
+                                modifier = Modifier.fillMaxWidth()
+                            )
                         }
                     }
                 }
